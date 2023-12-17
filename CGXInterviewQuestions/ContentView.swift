@@ -68,45 +68,30 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                NavigationLink {
-                    DetailView(onStartPause: {
-                        timerA.startPauseTimer()
-                    }, percentage: timerA.progress)
-                } label: {
-                    Text("Timer A")
-                        .frame(width: 200)
-                        .overlay(alignment: .trailing) {
-                            Text(timerA.progress)
-                        }
-                }
-                .buttonStyle(.borderedProminent)
-                
-                NavigationLink {
-                    DetailView(onStartPause: {
-                        timerB.startPauseTimer()
-                    }, percentage: timerB.progress)
-                } label: {
-                    Text("Timer B")
-                        .frame(width: 200)
-                        .overlay(alignment: .trailing) {
-                            Text(timerB.progress)
-                        }
-                }
-                .buttonStyle(.borderedProminent)
-
-                NavigationLink {
-                    DetailView(onStartPause: {
-                        timerC.startPauseTimer()
-                    }, percentage: timerC.progress)
-                } label: {
-                    Text("Timer C")
-                        .frame(width: 200)
-                        .overlay(alignment: .trailing) {
-                            Text(timerC.progress)
-                        }
-                }
-                .buttonStyle(.borderedProminent)
+                TimerButtonView(timer: timerA, title: "Timer A")
+                TimerButtonView(timer: timerB, title: "Timer B")
+                TimerButtonView(timer: timerC, title: "Timer C")
             }
+        }
+    }
+    
+    struct TimerButtonView: View {
+        @ObservedObject var timer: TimerViewModel
+        let title: String
+        
+        var body: some View {
+            NavigationLink {
+                DetailView(onStartPause: {
+                    timer.startPauseTimer()
+                }, percentage: timer.progress)
+            } label: {
+                Text(title)
+                    .frame(width: 200)
+                    .overlay(alignment: .trailing) {
+                        Text(timer.progress)
+                    }
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }
