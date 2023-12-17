@@ -7,6 +7,47 @@
 
 import SwiftUI
 
+final class TimerViewModel: ObservableObject {
+    let totalSecond: Int
+    
+    @Published private(set) var progress = "0%"
+    private var currentSecond = 0 {
+        didSet {
+            progress = Int((Double(currentSecond) / Double(totalSecond))*100.rounded(.toNearestOrEven)).description + "%"
+        }
+    }
+    
+    private var timer: Timer?
+    
+    init(totalSecond: Int) {
+        self.totalSecond = totalSecond
+    }
+    
+    deinit {
+        timer?.invalidate()
+    }
+    
+    func startPauseTimer() {
+        guard currentSecond < totalSecond else { return }
+        
+        if let timer {
+            timer.invalidate()
+            self.timer = nil
+        } else {
+            timer = .scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
+                guard let self else { return }
+                
+                currentSecond += 1
+                
+                if currentSecond >= totalSecond {
+                    timer.invalidate()
+                    self.timer = nil
+                }
+            })
+        }
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         NavigationStack {
