@@ -52,7 +52,12 @@ final class TimerViewModel: ObservableObject {
 }
 
 struct ContentView: View {
-    @StateObject private var timerA = TimerViewModel(totalSecond: 60)
+    @StateObject private var timerA = TimerViewModel(totalSecond: 60) { progress in
+        if progress > 0.2 {
+            // darkness level
+            UIScreen.main.brightness = (1-CGFloat(progress))
+        }
+    }
     @StateObject private var timerB = TimerViewModel(totalSecond: 90)
     @StateObject private var timerC = TimerViewModel(totalSecond: 120)
     
