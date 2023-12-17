@@ -49,24 +49,37 @@ final class TimerViewModel: ObservableObject {
 }
 
 struct ContentView: View {
+    @StateObject private var timerA = TimerViewModel(totalSecond: 60)
+    @StateObject private var timerB = TimerViewModel(totalSecond: 90)
+    @StateObject private var timerC = TimerViewModel(totalSecond: 120)
+    
     var body: some View {
         NavigationStack {
             VStack {
                 NavigationLink {
+                    DetailView(onStartPause: {
+                        timerA.startPauseTimer()
+                    }, percentage: timerA.progress)
                 } label: {
-                    Text("Timer A 55%")
+                    Text("Timer A \(timerA.progress)")
                 }
                 .buttonStyle(.borderedProminent)
                 
                 NavigationLink {
+                    DetailView(onStartPause: {
+                        timerB.startPauseTimer()
+                    }, percentage: timerB.progress)
                 } label: {
-                    Text("Timer B 55%")
+                    Text("Timer B \(timerB.progress)")
                 }
                 .buttonStyle(.borderedProminent)
 
                 NavigationLink {
+                    DetailView(onStartPause: {
+                        timerC.startPauseTimer()
+                    }, percentage: timerC.progress)
                 } label: {
-                    Text("Timer C 55%")
+                    Text("Timer C \(timerC.progress)")
                 }
                 .buttonStyle(.borderedProminent)
             }
