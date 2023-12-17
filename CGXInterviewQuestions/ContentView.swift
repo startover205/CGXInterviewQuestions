@@ -61,7 +61,11 @@ struct ContentView: View {
                         timerA.startPauseTimer()
                     }, percentage: timerA.progress)
                 } label: {
-                    Text("Timer A \(timerA.progress)")
+                    Text("Timer A")
+                        .frame(width: 200)
+                        .overlay(alignment: .trailing) {
+                            Text(timerA.progress)
+                        }
                 }
                 .buttonStyle(.borderedProminent)
                 
@@ -70,7 +74,11 @@ struct ContentView: View {
                         timerB.startPauseTimer()
                     }, percentage: timerB.progress)
                 } label: {
-                    Text("Timer B \(timerB.progress)")
+                    Text("Timer B")
+                        .frame(width: 200)
+                        .overlay(alignment: .trailing) {
+                            Text(timerB.progress)
+                        }
                 }
                 .buttonStyle(.borderedProminent)
 
@@ -79,7 +87,11 @@ struct ContentView: View {
                         timerC.startPauseTimer()
                     }, percentage: timerC.progress)
                 } label: {
-                    Text("Timer C \(timerC.progress)")
+                    Text("Timer C")
+                        .frame(width: 200)
+                        .overlay(alignment: .trailing) {
+                            Text(timerC.progress)
+                        }
                 }
                 .buttonStyle(.borderedProminent)
             }
