@@ -11,6 +11,7 @@
 		C0B389082B2F4EF900996512 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B389072B2F4EF900996512 /* ContentView.swift */; };
 		C0B3890A2B2F4EFB00996512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B389092B2F4EFB00996512 /* Assets.xcassets */; };
 		C0B3890D2B2F4EFB00996512 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B3890C2B2F4EFB00996512 /* Preview Assets.xcassets */; };
+		C0B389142B2F501C00996512 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B389132B2F501C00996512 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		C0B389072B2F4EF900996512 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C0B389092B2F4EFB00996512 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0B3890C2B2F4EFB00996512 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0B389132B2F501C00996512 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				C0B389052B2F4EF900996512 /* CGXInterviewQuestionsApp.swift */,
 				C0B389072B2F4EF900996512 /* ContentView.swift */,
+				C0B389132B2F501C00996512 /* DetailView.swift */,
 				C0B389092B2F4EFB00996512 /* Assets.xcassets */,
 				C0B3890B2B2F4EFB00996512 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B389082B2F4EF900996512 /* ContentView.swift in Sources */,
+				C0B389142B2F501C00996512 /* DetailView.swift in Sources */,
 				C0B389062B2F4EF900996512 /* CGXInterviewQuestionsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
