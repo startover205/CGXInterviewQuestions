@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MediaPlayer
 
 final class TimerViewModel: ObservableObject {
     let totalSecond: Int
@@ -58,7 +59,10 @@ struct ContentView: View {
             UIScreen.main.brightness = (1-CGFloat(progress))
         }
     }
-    @StateObject private var timerB = TimerViewModel(totalSecond: 90)
+    @StateObject private var timerB = TimerViewModel(totalSecond: 90) {
+        progress in
+        MPVolumeView.setVolume(Float(progress))
+    }
     @StateObject private var timerC = TimerViewModel(totalSecond: 120)
     
     var body: some View {
@@ -109,4 +113,15 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+extension MPVolumeView {
+    static func setVolume(_ volume: Float) -> Void {
+        let volumeView = MPVolumeView()
+        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+            slider?.value = volume
+        }
+    }
 }
