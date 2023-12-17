@@ -9,18 +9,21 @@ import SwiftUI
 
 final class TimerViewModel: ObservableObject {
     let totalSecond: Int
+    let onProgressChange: ((Double) -> Void)?
     
     @Published private(set) var progress = "0%"
     private var currentSecond = 0 {
         didSet {
+            onProgressChange?(Double(currentSecond) / Double(totalSecond))
             progress = Int((Double(currentSecond) / Double(totalSecond))*100.rounded(.toNearestOrEven)).description + "%"
         }
     }
     
     private var timer: Timer?
     
-    init(totalSecond: Int) {
+    init(totalSecond: Int, onProgressChange: ((Double) -> Void)? = nil) {
         self.totalSecond = totalSecond
+        self.onProgressChange = onProgressChange
     }
     
     deinit {
